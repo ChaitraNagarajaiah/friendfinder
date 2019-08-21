@@ -162,15 +162,83 @@
                 <option value="5">5 (Strongly Agree)</option>
             </select>
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
-        <a href="#" class="card-link">API Friends List</a>
-        <a href="#" class="card-link">GitHub Repo</a>
+        <div class="text-center">
+            <button id="submitBtn" type="submit" class="btn btn-success btn-lg">Submit</button>
+        </div>
 
+        <!--modal after survey is completed-->
+        <div id="modal1" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Best Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 id="userMatch"></h2>
+                        <img id="userMatchImage" src="#">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-
-
-
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="container">
+            <a href="/api/friendsdata" class="card-link">API Friends List</a>
+            <a href="#" class="card-link">GitHub Repo</a>
+        </div>
+    </footer>
+
+
+
+    <script type="text/javascript">
+
+
+        // In this code, jQuery is used to "download" the data from our server
+
+        $(document).ready(function () {
+            $('select').material_select();
+            $('.modal').modal({
+                dismissible: false // modal is dismissed when clicked outside of the modal
+            });
+        });
+
+        $("#submitBtn").on("click", function (event) {
+            event.preventDefault();
+
+            //capture user inputs
+            var userInput = {
+                name: $('#userName').val().trim(),
+                photo: $('#userPhoto').val().trim(),
+                scores: [
+                    $('#question1').val().trim(),
+                    $('#question2').val().trim(),
+                    $('#question3').val().trim(),
+                    $('#question4').val().trim(),
+                    $('#question5').val().trim(),
+                    $('#question6').val().trim(),
+                    $('#question7').val().trim(),
+                    $('#question8').val().trim(),
+                    $('#question9').val().trim(),
+                    $('#question10').val().trim(),
+                ]
+            };
+            $.post('/api/friendsdata', userInput).done(function (data) {
+                $('#userMatch').html(data.matchName);
+                $('#userMatchImage').attr("src", data.matchImage);
+
+                $('#modal1').modal('open');
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
