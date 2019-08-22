@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<cross-domain-policy>
+    <allow-access-from domain="*" />
+</cross-domain-policy>
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +11,7 @@
     <title>Survey</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -163,11 +167,11 @@
             </select>
         </div>
         <div class="text-center">
-            <button id="submitBtn" type="submit" class="btn btn-success btn-lg">Submit</button>
+            <button id="submitBtn" type="submit" class="btn btn-primary btn-lg">Submit</button>
         </div>
 
         <!--modal after survey is completed-->
-        <div id="modal1" class="modal" tabindex="-1" role="dialog">
+        <div id="modalid" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -190,8 +194,10 @@
     </div>
     <footer>
         <div class="container">
-            <a href="/api/friendsdata" class="card-link">API Friends List</a>
-            <a href="#" class="card-link">GitHub Repo</a>
+            <a href="/api/friends" class="card-link">API Friends List</a> | <a
+                href="https://github.com/ChaitraNagarajaiah" class="card-link">GitHub
+                Repo</a>
+
         </div>
     </footer>
 
@@ -202,40 +208,36 @@
 
         // In this code, jQuery is used to "download" the data from our server
 
-        $(document).ready(function () {
-            $('select').material_select();
-            $('.modal').modal({
-                dismissible: false // modal is dismissed when clicked outside of the modal
-            });
-        });
 
         $("#submitBtn").on("click", function (event) {
             event.preventDefault();
+            console.log("hello");
 
             //capture user inputs
             var userInput = {
-                name: $('#userName').val().trim(),
-                photo: $('#userPhoto').val().trim(),
+                name: $('#userName').val(),
+                photo: $('#userPhoto').val(),
                 scores: [
-                    $('#question1').val().trim(),
-                    $('#question2').val().trim(),
-                    $('#question3').val().trim(),
-                    $('#question4').val().trim(),
-                    $('#question5').val().trim(),
-                    $('#question6').val().trim(),
-                    $('#question7').val().trim(),
-                    $('#question8').val().trim(),
-                    $('#question9').val().trim(),
-                    $('#question10').val().trim(),
+                    $('#question1').val(),
+                    $('#question2').val(),
+                    $('#question3').val(),
+                    $('#question4').val(),
+                    $('#question5').val(),
+                    $('#question6').val(),
+                    $('#question7').val(),
+                    $('#question8').val(),
+                    $('#question9').val(),
+                    $('#question10').val(),
                 ]
             };
-            $.post('/api/friendsdata', userInput).done(function (data) {
+            $.post('/api/friends', userInput).done(function (data) {
                 $('#userMatch').html(data.matchName);
                 $('#userMatchImage').attr("src", data.matchImage);
 
-                $('#modal1').modal('open');
+                $('#modalid').modal('open');
             });
         });
+
     </script>
 
 

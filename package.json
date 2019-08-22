@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ChaitraNagarajaiah/friendfinder/issues"
   },
-  "homepage": "https://github.com/ChaitraNagarajaiah/friendfinder#readme"
+  "homepage": "https://github.com/ChaitraNagarajaiah/friendfinder#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

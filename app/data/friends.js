@@ -33,4 +33,4 @@ var friendsArray = [
         scores: [4, 3, 2, 5, 1, 4, 3, 2, 1, 5]
     }
 ];
-module.exports = friends;
+module.exports = friendsArray;
