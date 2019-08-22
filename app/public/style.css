@@ -1,0 +1,13 @@
+.modal-dialog {
+background-color: beige;
+}
+
+.active{
+    display: inline;
+}
+#userMatchImage{
+    width:100%;
+}
+.modal{
+    background-color: white;
+}
