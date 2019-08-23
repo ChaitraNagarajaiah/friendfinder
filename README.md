@@ -17,9 +17,15 @@ A POST routes /api/friends. This will be used to handle incoming survey results.
 We save your application's data inside of app/data/friends.js as an array of objects. 
 
 Technologies Used
+
 JavaScript
+
 jQuery
+
 node.js
+
 Express.js
+
 HTML
+
 Bootstrap
