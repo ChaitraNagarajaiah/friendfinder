@@ -183,10 +183,10 @@
                     </div>
                     <div class="modal-body">
                         <h2 id="userMatch"></h2>
-                        <img id="userMatchImage" src="#">
+                        <img id="userMatchImage" src="#" style="width:450px; height:350px;">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                     </div>
                 </div>
@@ -195,7 +195,7 @@
     </div>
     <footer>
         <div class="container">
-            <a href="/api/friends" class="card-link">API Friends List</a> | <a
+            <a href="/api/friends/" class="card-link">API Friends List</a> | <a
                 href="https://github.com/ChaitraNagarajaiah" class="card-link">GitHub
                 Repo</a>
 
@@ -239,8 +239,10 @@
             });
         });
 
-        $(".close, .popup").on("click", function () {
+
+        $("#close, .popup").on("click", function () {
             $("#modalid, .modal-content").removeClass("active");
+            //console.log(hey);
         });
 
     </script>

@@ -1,13 +1,15 @@
 .modal-dialog {
 background-color: beige;
+height:60%;
 }
 
 .active{
     display: inline;
 }
 #userMatchImage{
-    width:100%;
+width:100%;
+height: 100%;
 }
-.modal{
+#modalid{
     background-color: white;
 }
